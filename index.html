@@ -949,6 +949,18 @@
 
         .envelope-stage {
           width: min(92vw, 440px);
+          justify-self: center;
+          margin-inline: auto;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .envelope-left {
+          clip-path: polygon(0 0, 0 100%, 50% 54%);
+        }
+
+        .envelope-right {
+          clip-path: polygon(100% 0, 50% 54%, 100% 100%);
         }
 
         .cover-copy h2 {
