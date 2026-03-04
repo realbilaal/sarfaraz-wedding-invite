@@ -8,15 +8,12 @@
       name="description"
       content="You are invited to celebrate the wedding of Sarfaraz Hussain and Khulood Hassan on 05 April 2026 at Heritage Convention Hall, Uppalli."
     />
-    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Sarfaraz & Khulood | Wedding Invitation" />
     <meta
       property="og:description"
       content="Join us for Nikah at 11:30 AM on 05 April 2026 at Heritage Convention Hall, Uppalli."
     />
-    <meta property="og:image" content="assets/og.jpg" />
     <meta property="og:url" content="./" />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -25,7 +22,6 @@
       name="twitter:description"
       content="Join us for Nikah at 11:30 AM on 05 April 2026 at Heritage Convention Hall, Uppalli."
     />
-    <meta name="twitter:image" content="assets/og.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,19 +37,20 @@
     <style>
       :root {
         --ruby: #9b111e;
-        --ruby-deep: #6d0a14;
-        --ruby-night: #21070c;
-        --ruby-velvet: #3c0d16;
-        --gold: #e7bc78;
-        --gold-soft: #f4ddb4;
-        --gold-foil: #cf9a52;
-        --ivory: #fff7ea;
+        --ruby-deep: #700a15;
+        --ruby-night: #22070c;
+        --ruby-shadow: #450b13;
+        --gold: #e6ba74;
+        --gold-soft: #f6ddb1;
+        --gold-deep: #b57b32;
+        --ivory: #f7f3ee;
+        --paper: #fffaf4;
         --ink: #fff5e6;
-        --ink-soft: rgba(255, 243, 223, 0.84);
-        --panel: rgba(50, 8, 17, 0.58);
-        --panel-border: rgba(248, 221, 172, 0.32);
-        --premium-blue: #263a5c;
-        --shadow-heavy: 0 28px 70px rgba(0, 0, 0, 0.45);
+        --ink-soft: rgba(255, 244, 226, 0.84);
+        --panel: rgba(52, 7, 18, 0.56);
+        --panel-border: rgba(250, 223, 176, 0.32);
+        --blue-accent: rgba(32, 50, 74, 0.18);
+        --shadow-heavy: 0 28px 72px rgba(0, 0, 0, 0.46);
       }
 
       * {
@@ -67,31 +64,25 @@
       body {
         margin: 0;
         min-height: 100%;
+        overflow-x: hidden;
         color: var(--ink);
         font-family: "Manrope", "Segoe UI", sans-serif;
-        overflow-x: hidden;
         background:
-          radial-gradient(1200px 600px at 50% -18%, rgba(255, 229, 184, 0.17), transparent 56%),
-          radial-gradient(860px 460px at 20% 18%, rgba(185, 24, 54, 0.18), transparent 62%),
-          radial-gradient(1000px 580px at 90% 10%, rgba(38, 58, 92, 0.11), transparent 68%),
-          linear-gradient(155deg, #2c0912 0%, var(--ruby) 34%, var(--ruby-deep) 62%, var(--ruby-night) 100%);
+          radial-gradient(1200px 600px at 50% -15%, rgba(255, 228, 185, 0.15), transparent 58%),
+          radial-gradient(900px 560px at 12% 18%, rgba(177, 24, 51, 0.16), transparent 66%),
+          radial-gradient(940px 640px at 88% 8%, rgba(31, 49, 73, 0.11), transparent 68%),
+          linear-gradient(160deg, var(--ruby-night) 0%, var(--ruby) 36%, var(--ruby-deep) 64%, #18060a 100%);
       }
 
       body::before {
         content: "";
         position: fixed;
         inset: 0;
-        pointer-events: none;
         z-index: 0;
+        pointer-events: none;
         background:
-          linear-gradient(125deg, rgba(255, 244, 228, 0.03), rgba(255, 244, 228, 0) 40%),
-          repeating-linear-gradient(
-            100deg,
-            rgba(255, 241, 219, 0.015) 0,
-            rgba(255, 241, 219, 0.015) 2px,
-            transparent 2px,
-            transparent 9px
-          );
+          linear-gradient(130deg, rgba(255, 247, 232, 0.05), rgba(255, 247, 232, 0) 34%),
+          linear-gradient(0deg, rgba(255, 248, 236, 0.035), rgba(255, 248, 236, 0.01));
         mix-blend-mode: soft-light;
       }
 
@@ -99,9 +90,9 @@
         content: "";
         position: fixed;
         inset: 0;
-        pointer-events: none;
         z-index: 0;
-        background: radial-gradient(140% 90% at 50% 48%, transparent 50%, rgba(7, 2, 4, 0.5) 100%);
+        pointer-events: none;
+        background: radial-gradient(145% 90% at 50% 45%, transparent 52%, rgba(8, 2, 4, 0.52) 100%);
       }
 
       .js body {
@@ -115,55 +106,19 @@
       .petal-canvas {
         position: fixed;
         inset: 0;
-        pointer-events: none;
         z-index: 1;
-        overflow: hidden;
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
       }
 
       .js .petal-canvas {
         opacity: 0;
-        transition: opacity 0.8s ease;
+        transition: opacity 0.75s ease;
       }
 
       .js body.opened .petal-canvas {
         opacity: 1;
-      }
-
-      .petal {
-        --x: 50vw;
-        --size: 16px;
-        --duration: 14s;
-        --delay: 0s;
-        --drift: 100px;
-        --spin: 360deg;
-        --blur: 0px;
-        --opacity: 0.9;
-        position: absolute;
-        left: var(--x);
-        top: -15vh;
-        width: var(--size);
-        height: calc(var(--size) * 0.74);
-        opacity: 0;
-        filter: blur(var(--blur));
-        animation: petalFall var(--duration) linear var(--delay) infinite;
-      }
-
-      .petal::before,
-      .petal::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 66% 34% 64% 40%;
-      }
-
-      .petal::before {
-        background: linear-gradient(148deg, rgba(255, 238, 243, 0.96), rgba(225, 80, 132, 0.85));
-        box-shadow: 0 0 12px rgba(255, 171, 206, 0.28);
-      }
-
-      .petal::after {
-        transform: translateX(-15%) scale(0.84);
-        background: linear-gradient(130deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
       }
 
       .cover {
@@ -173,289 +128,282 @@
         z-index: 30;
         min-height: 100svh;
         min-height: 100dvh;
-        perspective: 1800px;
-        align-items: center;
-        justify-content: center;
-        padding: clamp(0.8rem, 3vw, 2rem);
         background:
-          radial-gradient(900px 420px at 50% 0%, rgba(255, 226, 176, 0.13), transparent 58%),
-          radial-gradient(980px 760px at 50% 100%, rgba(17, 6, 9, 0.56), transparent 68%),
-          linear-gradient(160deg, rgba(11, 4, 7, 0.8), rgba(11, 3, 6, 0.93));
-        transition: opacity 0.82s ease, transform 0.9s cubic-bezier(0.18, 0.95, 0.27, 1);
+          radial-gradient(1100px 520px at 50% -8%, rgba(255, 255, 255, 0.95), transparent 62%),
+          linear-gradient(180deg, var(--ivory), #f4efe8);
       }
 
       .js .cover {
-        display: flex;
+        display: grid;
+        place-items: center;
       }
 
-      .envelope-paper {
+      .cover-wrap {
+        width: min(92vw, 540px);
+        display: grid;
+        justify-items: center;
+        gap: clamp(1rem, 3.5vh, 1.8rem);
+        padding: 1rem 0.8rem 2rem;
+      }
+
+      .envelope-stage {
         position: relative;
-        width: min(94vw, 760px);
-        height: min(74svh, 560px);
-        height: min(74dvh, 560px);
-        min-height: 420px;
-        overflow: hidden;
-        transform-style: preserve-3d;
-        border-radius: 28px;
-        border: 1px solid rgba(255, 220, 170, 0.24);
+        width: min(90vw, 470px);
+        aspect-ratio: 16 / 10;
+        perspective: 1800px;
+        filter: drop-shadow(0 26px 34px rgba(20, 8, 8, 0.2)) drop-shadow(0 8px 10px rgba(20, 8, 8, 0.15));
+      }
+
+      .envelope-back,
+      .envelope-left,
+      .envelope-right,
+      .envelope-bottom,
+      .envelope-top,
+      .letter-peek {
+        position: absolute;
+        inset: 0;
+      }
+
+      .envelope-back {
+        border-radius: 16px;
         background:
-          radial-gradient(120% 80% at 50% -20%, rgba(255, 220, 168, 0.24), rgba(255, 220, 168, 0) 56%),
-          linear-gradient(136deg, #34133f 0%, #6a1737 24%, var(--ruby) 46%, #a43d2c 70%, #d0a267 100%);
+          radial-gradient(120% 100% at 50% -22%, rgba(255, 233, 196, 0.22), rgba(255, 233, 196, 0) 52%),
+          linear-gradient(145deg, #a61120 0%, var(--ruby) 38%, var(--ruby-deep) 100%);
+        border: 1px solid rgba(255, 216, 160, 0.22);
         box-shadow:
-          0 28px 56px rgba(0, 0, 0, 0.45),
-          inset 0 1px 0 rgba(255, 242, 214, 0.18),
-          inset 0 -42px 80px rgba(0, 0, 0, 0.26);
-        transition: transform 0.95s cubic-bezier(0.2, 1, 0.26, 1), filter 0.95s ease;
+          inset 0 1px 0 rgba(255, 246, 231, 0.2),
+          inset 0 -30px 50px rgba(0, 0, 0, 0.2);
       }
 
-      .envelope-paper::before {
+      .envelope-back::before {
         content: "";
         position: absolute;
-        inset: 2%;
-        border: 1px solid rgba(251, 223, 175, 0.34);
-        border-radius: 24px;
-        box-shadow:
-          inset 0 0 0 1px rgba(255, 247, 228, 0.08),
-          0 0 0 1px rgba(154, 20, 35, 0.2);
-        pointer-events: none;
+        inset: 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(249, 221, 174, 0.26);
       }
 
-      .envelope-paper::after {
+      .envelope-back::after {
         content: "";
         position: absolute;
         inset: 0;
+        border-radius: 16px;
+        background: linear-gradient(115deg, rgba(255, 246, 230, 0.12), rgba(255, 246, 230, 0) 34%);
         pointer-events: none;
+      }
+
+      .letter-peek {
+        z-index: 1;
+        left: 8%;
+        right: 8%;
+        top: 20%;
+        bottom: 11%;
+        border-radius: 14px 14px 10px 10px;
         background:
-          radial-gradient(70% 24% at 50% 8%, rgba(255, 248, 236, 0.24), rgba(255, 248, 236, 0) 100%),
-          linear-gradient(115deg, rgba(255, 245, 227, 0.08), rgba(255, 245, 227, 0) 34%);
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(252, 244, 233, 0.98)),
+          repeating-linear-gradient(
+            180deg,
+            rgba(240, 226, 206, 0.3) 0,
+            rgba(240, 226, 206, 0.3) 1px,
+            transparent 1px,
+            transparent 28px
+          );
+        border: 1px solid rgba(214, 194, 165, 0.54);
+        box-shadow: 0 12px 18px rgba(20, 10, 10, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        transform: translateY(8%);
+        transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
       }
 
-      .cover-content {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        text-align: center;
-        padding: clamp(1.2rem, 5vh, 3rem) 1.2rem 1rem;
-        z-index: 8;
-        transition: transform 0.9s cubic-bezier(0.2, 1, 0.26, 1), opacity 0.8s ease;
+      .envelope-left,
+      .envelope-right,
+      .envelope-bottom {
+        z-index: 3;
+        border: 1px solid rgba(255, 212, 152, 0.2);
       }
 
-      .cover-heading {
-        max-width: 680px;
-        width: 100%;
-      }
-
-      .cover-title {
-        margin: 0;
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(1.08rem, 3.6vw, 1.95rem);
-        font-weight: 600;
-        line-height: 1.1;
-        letter-spacing: 0.03em;
-        color: #f8dfb3;
-        text-shadow:
-          0 8px 22px rgba(0, 0, 0, 0.45),
-          0 1px 0 rgba(255, 243, 219, 0.28);
-      }
-
-      .cover-note {
-        margin: 0.56rem 0 0;
-        text-transform: uppercase;
-        letter-spacing: 0.22em;
-        font-size: 0.58rem;
-        font-weight: 700;
-        color: rgba(252, 227, 191, 0.94);
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
-      }
-
-      .envelope-pocket {
-        position: absolute;
-        inset: auto 0 0;
-        height: 56%;
-        z-index: 4;
-        pointer-events: none;
-        transition: transform 0.95s cubic-bezier(0.2, 1, 0.26, 1);
-      }
-
-      .envelope-pocket::before {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        width: 1px;
-        height: 100%;
-        transform: translateX(-50%);
-        background: linear-gradient(to top, rgba(255, 218, 160, 0.2), rgba(255, 218, 160, 0));
-      }
-
-      .pocket-left,
-      .pocket-right {
-        position: absolute;
-        bottom: 0;
-        width: 50%;
-        height: 100%;
+      .envelope-left {
+        clip-path: polygon(0 0, 0 100%, 54% 54%);
         background:
-          linear-gradient(168deg, rgba(88, 23, 104, 0.95), rgba(110, 8, 21, 0.95) 44%, rgba(159, 67, 42, 0.95)),
-          linear-gradient(115deg, rgba(255, 238, 210, 0.08), rgba(255, 238, 210, 0));
-        box-shadow: inset 0 0 0 1px rgba(255, 217, 164, 0.09);
+          linear-gradient(145deg, #a01220, #7d0d18),
+          linear-gradient(120deg, rgba(255, 242, 218, 0.08), rgba(255, 242, 218, 0));
       }
 
-      .pocket-left {
-        left: 0;
-        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 64%);
+      .envelope-right {
+        clip-path: polygon(100% 0, 46% 54%, 100% 100%);
+        background:
+          linear-gradient(220deg, #a01220, #7d0d18),
+          linear-gradient(120deg, rgba(255, 242, 218, 0.08), rgba(255, 242, 218, 0));
       }
 
-      .pocket-right {
-        right: 0;
-        clip-path: polygon(0 100%, 100% 100%, 100% 64%, 0 0);
+      .envelope-bottom {
+        clip-path: polygon(0 100%, 50% 56%, 100% 100%);
+        background:
+          linear-gradient(180deg, #aa1423, #81101b),
+          linear-gradient(90deg, rgba(255, 244, 224, 0.09), rgba(255, 244, 224, 0));
+        box-shadow: inset 0 16px 24px rgba(0, 0, 0, 0.14);
       }
 
-      .envelope-flap {
-        position: absolute;
-        inset: 0;
-        height: 58%;
-        z-index: 6;
+      .envelope-top {
+        z-index: 5;
+        clip-path: polygon(0 0, 100% 0, 50% 86%);
         transform-origin: top center;
         transform: rotateX(0deg);
-        transform-style: preserve-3d;
-        backface-visibility: hidden;
-        clip-path: polygon(0 0, 100% 0, 50% 100%);
         background:
-          linear-gradient(180deg, #4f1e62 0%, var(--ruby) 45%, #b14d2f 100%),
-          linear-gradient(118deg, rgba(255, 245, 225, 0.1), rgba(255, 245, 225, 0));
+          radial-gradient(90% 60% at 50% 4%, rgba(255, 245, 223, 0.19), rgba(255, 245, 223, 0) 74%),
+          linear-gradient(180deg, #b11827 0%, var(--ruby) 52%, #7b0e19 100%);
+        border: 1px solid rgba(255, 216, 157, 0.3);
         box-shadow:
-          0 16px 30px rgba(0, 0, 0, 0.34),
-          inset 0 -1px rgba(255, 210, 154, 0.28);
-        transition: transform 1.05s cubic-bezier(0.16, 1, 0.24, 1), filter 0.85s ease;
+          0 8px 20px rgba(0, 0, 0, 0.2),
+          inset 0 -1px 0 rgba(255, 236, 202, 0.32);
+        transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s ease;
+        will-change: transform;
       }
 
-      .envelope-flap::before {
+      .envelope-top::before {
         content: "";
         position: absolute;
-        inset: 10% 14%;
-        border: 1px solid rgba(255, 220, 170, 0.4);
+        inset: 11% 15%;
+        border-radius: 22px 22px 0 0;
+        border: 1px solid rgba(250, 221, 172, 0.3);
         border-bottom: 0;
-        border-radius: 24px 24px 0 0;
-      }
-
-      .envelope-flap::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(255, 247, 232, 0.14), rgba(255, 247, 232, 0));
       }
 
       .seal {
         -webkit-tap-highlight-color: transparent;
         appearance: none;
-        border: 1px solid rgba(255, 237, 201, 0.86);
-        background: linear-gradient(160deg, rgba(255, 248, 233, 0.98), rgba(242, 214, 160, 0.96));
-        border-radius: 999px;
+        border: 0;
         position: absolute;
         left: 50%;
-        top: 50%;
+        top: 52%;
         transform: translate(-50%, -50%);
-        width: 168px;
-        height: 168px;
+        width: clamp(92px, 22vw, 116px);
+        height: clamp(92px, 22vw, 116px);
         min-width: 44px;
         min-height: 44px;
-        z-index: 9;
+        z-index: 7;
         cursor: pointer;
+        border-radius: 47% 53% 51% 49% / 52% 46% 54% 48%;
+        background:
+          conic-gradient(
+            from 210deg,
+            #f8d996 0deg,
+            #b67b31 56deg,
+            #f7e2ad 130deg,
+            #ba7f37 214deg,
+            #fbe7b8 286deg,
+            #bc833b 360deg
+          );
         box-shadow:
-          0 16px 24px rgba(24, 8, 8, 0.42),
-          inset 0 1px 0 rgba(255, 255, 255, 0.72),
-          inset 0 -8px 16px rgba(155, 96, 38, 0.22);
-        display: grid;
-        place-items: center;
-        transition: transform 0.24s ease, opacity 0.34s ease, filter 0.24s ease, box-shadow 0.24s ease;
+          0 14px 18px rgba(38, 18, 7, 0.3),
+          inset 0 2px 2px rgba(255, 247, 224, 0.8),
+          inset 0 -8px 14px rgba(123, 76, 25, 0.33);
+        transition: transform 0.24s ease, box-shadow 0.24s ease, filter 0.24s ease;
       }
 
       .seal::before {
         content: "";
         position: absolute;
-        inset: -10px;
-        border-radius: 999px;
-        border: 2px solid rgba(250, 222, 169, 0.56);
+        inset: 10px;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 34% 24%, rgba(255, 248, 227, 0.92), rgba(255, 248, 227, 0) 36%),
+          linear-gradient(160deg, #f4cd88 0%, #c7893a 58%, #a66c28 100%);
+        border: 1px solid rgba(255, 231, 182, 0.7);
         box-shadow:
-          0 0 0 1px rgba(255, 250, 238, 0.28),
-          0 0 26px rgba(38, 58, 92, 0.12);
-        animation: tapHalo 2.3s ease-in-out infinite;
+          inset 0 1px 1px rgba(255, 249, 232, 0.88),
+          inset 0 -10px 12px rgba(117, 72, 21, 0.28);
       }
 
       .seal::after {
-        content: "Tap";
+        content: "";
         position: absolute;
-        bottom: 22px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.66rem;
-        letter-spacing: 0.2em;
-        font-weight: 800;
-        color: #6d1d12;
-        text-transform: uppercase;
-        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+        inset: -8px;
+        border-radius: 48% 52% 53% 47% / 51% 49% 52% 48%;
+        border: 1.8px solid rgba(241, 208, 144, 0.55);
+        box-shadow: 0 0 0 1px rgba(255, 248, 226, 0.24), 0 0 24px var(--blue-accent);
+        animation: haloPulse 2.2s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .seal-monogram {
+        position: relative;
+        z-index: 2;
+        display: block;
+        text-align: center;
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(2.2rem, 6.8vw, 2.75rem);
+        line-height: 1;
+        color: #ab712d;
+        text-shadow:
+          -1px -1px 0 rgba(255, 245, 219, 0.8),
+          1px 1px 0 rgba(116, 74, 26, 0.36),
+          0 8px 10px rgba(124, 72, 19, 0.24);
+        transform: translateY(2px);
       }
 
       .seal:focus-visible {
         outline: 2px solid var(--gold-soft);
-        outline-offset: 6px;
+        outline-offset: 4px;
       }
 
       .seal:hover {
-        transform: translate(-50%, -50%) scale(1.02);
+        filter: saturate(1.05) brightness(1.02);
+        transform: translate(-50%, -50%) scale(1.015);
       }
 
-      .seal-monogram {
-        transform: translateY(-12px);
-        font-family: "Great Vibes", cursive;
-        font-size: 3.3rem;
-        line-height: 1;
+      .cover-copy {
+        text-align: center;
+        color: #48211f;
+      }
+
+      .cover-copy h2 {
+        margin: 0;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.5rem, 5.2vw, 2.1rem);
         font-weight: 600;
-        color: #9f572d;
-        text-shadow:
-          0 1px 0 rgba(255, 249, 237, 0.95),
-          0 9px 14px rgba(91, 36, 14, 0.22);
-        user-select: none;
+        letter-spacing: 0.03em;
+      }
+
+      .cover-copy p {
+        margin: 0.35rem 0 0;
+        text-transform: uppercase;
+        letter-spacing: 0.26em;
+        font-size: 0.62rem;
+        font-weight: 700;
+        color: rgba(88, 38, 35, 0.72);
       }
 
       .js body.opening-press .seal {
-        transform: translate(-50%, -50%) scale(0.91);
-        filter: brightness(0.97);
+        transform: translate(-50%, -50%) scale(0.92);
         box-shadow:
-          0 8px 12px rgba(21, 5, 5, 0.34),
-          inset 0 1px 0 rgba(255, 255, 255, 0.62),
-          inset 0 -6px 14px rgba(161, 107, 44, 0.22);
+          0 8px 11px rgba(38, 18, 7, 0.26),
+          inset 0 2px 2px rgba(255, 247, 224, 0.7),
+          inset 0 -6px 10px rgba(123, 76, 25, 0.3);
       }
 
       .js body.opening-lift .seal {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.62);
+        transform: translate(-50%, -50%) scale(0.66);
       }
 
-      .js body.opening-lift .envelope-flap {
-        transform: rotateX(-180deg) translateY(-6px);
-        filter: brightness(0.95);
+      .js body.opening-lift .envelope-top {
+        transform: rotateX(-174deg) translateY(-4px);
+        filter: brightness(0.97);
       }
 
-      .js body.opening-lift .cover-content {
-        transform: translateY(-44px);
+      .js body.opening-lift .letter-peek {
+        transform: translateY(-6%);
+      }
+
+      .js body.opening-lift .cover-copy {
         opacity: 0;
-      }
-
-      .js body.opening-lift .envelope-pocket {
-        transform: translateY(8px) scale(0.99);
-      }
-
-      .js body.opening-lift .envelope-paper {
-        transform: translateY(-3px) scale(1.003);
+        transform: translateY(-8px);
       }
 
       .js body.opened .cover {
         opacity: 0;
-        transform: scale(1.015);
         pointer-events: none;
+        transition: opacity 0.6s ease;
       }
 
       .invite {
@@ -468,7 +416,7 @@
         opacity: 0;
         transform: translateY(16px);
         pointer-events: none;
-        transition: opacity 0.34s ease, transform 0.44s cubic-bezier(0.16, 0.95, 0.26, 1);
+        transition: opacity 0.42s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
       }
 
       .js body.opened .invite {
@@ -482,8 +430,8 @@
       }
 
       .js body.opened .flow-item {
-        animation: flowIn 0.58s both;
-        animation-delay: calc((var(--order, 1) - 1) * 0.1s + 0.04s);
+        animation: flowIn 0.6s both;
+        animation-delay: calc((var(--order, 1) - 1) * 0.11s + 0.05s);
       }
 
       .section {
@@ -496,12 +444,10 @@
       .hero {
         min-height: 100svh;
         min-height: 100dvh;
-        width: 100%;
-        margin: 0;
         display: grid;
         place-items: center;
         text-align: center;
-        padding: 4.6rem 1.2rem 3rem;
+        padding: 4.7rem 1.2rem 3rem;
       }
 
       .hero-lights {
@@ -517,14 +463,14 @@
         width: min(84vw, 770px);
         height: min(57vw, 520px);
         transform: translateX(-50%);
-        border: 1.8px solid rgba(245, 214, 163, 0.52);
+        border: 1.8px solid rgba(245, 214, 163, 0.5);
         border-bottom: 0;
         border-top-left-radius: 420px;
         border-top-right-radius: 420px;
         box-shadow:
-          0 0 30px rgba(238, 188, 112, 0.18),
-          0 0 48px rgba(38, 58, 92, 0.08),
-          inset 0 0 24px rgba(255, 207, 130, 0.12);
+          0 0 26px rgba(236, 188, 112, 0.16),
+          0 0 36px var(--blue-accent),
+          inset 0 0 24px rgba(255, 207, 130, 0.1);
         animation: archPulse 5.4s ease-in-out infinite;
       }
 
@@ -532,7 +478,7 @@
         width: min(68vw, 620px);
         height: min(47vw, 430px);
         top: 14%;
-        opacity: 0.62;
+        opacity: 0.6;
         animation-delay: 0.8s;
       }
 
@@ -545,7 +491,7 @@
       .eyebrow {
         margin: 0;
         text-transform: uppercase;
-        letter-spacing: 0.19em;
+        letter-spacing: 0.2em;
         font-size: 0.72rem;
         font-weight: 700;
         color: var(--gold-soft);
@@ -554,25 +500,25 @@
       .hero h1 {
         margin: 1rem 0 0.84rem;
         display: grid;
-        gap: 0.64rem;
-        line-height: 0.9;
+        gap: 0.6rem;
+        line-height: 0.92;
       }
 
       .hero h1 span {
-        font-size: clamp(2.4rem, 9.5vw, 5.9rem);
+        font-size: clamp(2.38rem, 9.4vw, 5.9rem);
         font-weight: 600;
         text-shadow: 0 12px 34px rgba(0, 0, 0, 0.5);
       }
 
       .hero h1 em {
         font-style: normal;
-        font-size: clamp(1.48rem, 5.5vw, 2.9rem);
+        font-size: clamp(1.45rem, 5.5vw, 2.9rem);
         color: var(--gold);
       }
 
       .hero-subtitle {
         margin: 0 0 1rem;
-        font-size: clamp(1rem, 3.8vw, 1.38rem);
+        font-size: clamp(1rem, 3.8vw, 1.36rem);
         color: var(--ink-soft);
       }
 
@@ -654,7 +600,7 @@
       .invite-script {
         margin: 0.92rem 0 0;
         font-family: "Great Vibes", cursive;
-        font-size: clamp(2.48rem, 8.8vw, 4.2rem);
+        font-size: clamp(2.45rem, 8.8vw, 4.2rem);
         font-weight: 400;
         line-height: 1;
       }
@@ -687,7 +633,7 @@
         width: min(72vw, 560px);
         height: auto;
         overflow: visible;
-        filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.16));
+        filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
       }
 
       .details {
@@ -722,10 +668,8 @@
           linear-gradient(160deg, rgba(255, 233, 189, 0.18), rgba(255, 219, 160, 0.04)),
           rgba(48, 6, 18, 0.5);
         border: 1px solid rgba(255, 223, 165, 0.32);
-        box-shadow:
-          0 16px 28px rgba(0, 0, 0, 0.26),
-          inset 0 0 0 1px rgba(255, 247, 231, 0.08);
-        backdrop-filter: blur(9px);
+        box-shadow: 0 16px 28px rgba(0, 0, 0, 0.26), inset 0 0 0 1px rgba(255, 247, 231, 0.08);
+        backdrop-filter: blur(8px);
       }
 
       .detail-label {
@@ -861,7 +805,8 @@
         border: 1px solid rgba(255, 223, 163, 0.42);
         box-shadow:
           0 18px 36px rgba(0, 0, 0, 0.34),
-          0 0 0 1px rgba(255, 245, 228, 0.1);
+          0 0 0 1px rgba(255, 245, 228, 0.1),
+          inset 0 0 0 1px rgba(255, 248, 236, 0.08);
       }
 
       #venueMap {
@@ -912,7 +857,8 @@
           inset 0 1px 0 rgba(255, 248, 229, 0.65);
       }
 
-      .btn-primary:active {
+      .btn-primary:active,
+      .btn-ghost:active {
         transform: translateY(0) scale(0.99);
       }
 
@@ -920,10 +866,6 @@
         border-color: rgba(255, 231, 188, 0.45);
         background: rgba(255, 235, 204, 0.08);
         color: var(--ink);
-      }
-
-      .btn-ghost:active {
-        transform: translateY(0) scale(0.99);
       }
 
       .footer {
@@ -945,7 +887,7 @@
       .js .reveal {
         opacity: 0;
         transform: translateY(20px) scale(0.99);
-        transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+        transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.65s ease;
         transition-delay: var(--delay, 0s);
       }
 
@@ -962,29 +904,6 @@
         to {
           opacity: 1;
           transform: translateY(0) scale(1);
-        }
-      }
-
-      @keyframes petalFall {
-        0% {
-          opacity: 0;
-          transform: translate3d(0, -16vh, 0) rotate(0deg);
-        }
-        10% {
-          opacity: var(--opacity);
-        }
-        30% {
-          transform: translate3d(calc(var(--drift) * 0.3), 30vh, 0) rotate(calc(var(--spin) * 0.3));
-        }
-        58% {
-          transform: translate3d(calc(var(--drift) * -0.35), 62vh, 0) rotate(calc(var(--spin) * 0.63));
-        }
-        82% {
-          transform: translate3d(calc(var(--drift) * 0.5), 86vh, 0) rotate(calc(var(--spin) * 0.84));
-        }
-        100% {
-          opacity: 0;
-          transform: translate3d(var(--drift), 112vh, 0) rotate(var(--spin));
         }
       }
 
@@ -1010,51 +929,38 @@
         }
       }
 
-      @keyframes tapHalo {
+      @keyframes haloPulse {
         0%,
         100% {
-          opacity: 0.78;
+          opacity: 0.82;
           transform: scale(1);
         }
         50% {
           opacity: 0.36;
-          transform: scale(1.05);
+          transform: scale(1.045);
         }
       }
 
       @media (max-width: 860px) {
-        .envelope-paper {
-          width: min(94vw, 560px);
-          height: min(72svh, 510px);
-          height: min(72dvh, 510px);
-          min-height: 390px;
-          border-radius: 24px;
+        .cover-wrap {
+          gap: 1rem;
+          padding-top: 0.6rem;
         }
 
-        .cover-content {
-          padding-top: clamp(1rem, 4.8vh, 2.2rem);
+        .envelope-stage {
+          width: min(92vw, 440px);
         }
 
-        .seal {
-          width: 154px;
-          height: 154px;
+        .cover-copy h2 {
+          font-size: clamp(1.4rem, 5.2vw, 1.9rem);
         }
 
-        .seal::after {
-          bottom: 20px;
-          font-size: 0.62rem;
-        }
-
-        .seal-monogram {
-          font-size: 3rem;
+        .hero {
+          padding-top: 5.25rem;
         }
 
         .details-grid {
           grid-template-columns: repeat(1, minmax(0, 1fr));
-        }
-
-        .hero {
-          padding-top: 5.3rem;
         }
       }
 
@@ -1078,10 +984,6 @@
           scroll-behavior: auto !important;
         }
 
-        .js .cover {
-          display: none;
-        }
-
         .js body,
         .js body.opened {
           overflow: auto;
@@ -1102,27 +1004,26 @@
     </style>
   </head>
   <body>
-    <div class="petal-canvas" id="petalCanvas"></div>
+    <canvas class="petal-canvas" id="petalCanvas" aria-hidden="true"></canvas>
 
     <section class="cover" id="cover" aria-label="Invitation cover">
-      <div class="envelope-paper">
-        <div class="cover-content">
-          <div class="cover-heading">
-            <h2 class="cover-title">A Special Invitation</h2>
-            <p class="cover-note">Tap to Open</p>
-          </div>
+      <div class="cover-wrap">
+        <div class="envelope-stage" aria-hidden="true">
+          <div class="envelope-back"></div>
+          <div class="letter-peek"></div>
+          <div class="envelope-left"></div>
+          <div class="envelope-right"></div>
+          <div class="envelope-bottom"></div>
+          <div class="envelope-top"></div>
+          <button class="seal" id="sealBtn" aria-label="Open invitation">
+            <span class="seal-monogram" aria-hidden="true">SK</span>
+          </button>
         </div>
 
-        <div class="envelope-pocket" aria-hidden="true">
-          <span class="pocket-left"></span>
-          <span class="pocket-right"></span>
+        <div class="cover-copy">
+          <h2>A Special Invitation</h2>
+          <p>Tap to Open</p>
         </div>
-
-        <div class="envelope-flap" aria-hidden="true"></div>
-
-        <button class="seal" id="sealBtn" aria-label="Open invitation">
-          <span class="seal-monogram" aria-hidden="true">SK</span>
-        </button>
       </div>
     </section>
 
@@ -1216,7 +1117,7 @@
         <blockquote class="quote reveal" style="--delay: 0.18s">
           And among His signs is that He created for you from yourselves mates that you may find tranquility in
           them; and He placed between you affection and mercy.
-          <cite>&mdash; Qur'an 30:21</cite>
+          <cite>Qur'an 30:21</cite>
         </blockquote>
       </section>
 
@@ -1273,32 +1174,6 @@
 
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-        function createPetals() {
-          if (!petalCanvas || prefersReducedMotion) return;
-
-          const count = Math.min(64, Math.max(30, Math.floor(window.innerWidth / 18)));
-          for (let i = 0; i < count; i += 1) {
-            const petal = document.createElement("span");
-            petal.className = "petal";
-            petal.style.setProperty("--x", `${Math.random() * 100}vw`);
-            petal.style.setProperty("--size", `${10 + Math.random() * 18}px`);
-            petal.style.setProperty("--duration", `${8 + Math.random() * 12}s`);
-            petal.style.setProperty("--delay", `${Math.random() * -22}s`);
-            petal.style.setProperty("--drift", `${-140 + Math.random() * 280}px`);
-            petal.style.setProperty("--spin", `${240 + Math.random() * 460}deg`);
-            petal.style.setProperty("--blur", `${Math.random() * 1.6}px`);
-            petal.style.setProperty("--opacity", `${0.55 + Math.random() * 0.4}`);
-            petalCanvas.appendChild(petal);
-          }
-        }
-
-        let petalsReady = false;
-        function ensurePetals() {
-          if (petalsReady) return;
-          petalsReady = true;
-          window.setTimeout(createPetals, 40);
-        }
-
         let opening = false;
         function openInvite() {
           if (opening || body.classList.contains("opened")) return;
@@ -1306,7 +1181,6 @@
 
           if (prefersReducedMotion) {
             body.classList.add("opened");
-            ensurePetals();
             runReveal();
             opening = false;
             return;
@@ -1316,7 +1190,7 @@
           window.setTimeout(() => {
             body.classList.remove("opening-press");
             body.classList.add("opening-lift");
-          }, 160);
+          }, 140);
 
           window.setTimeout(() => {
             body.classList.remove("opening-lift");
@@ -1324,7 +1198,7 @@
             ensurePetals();
             runReveal();
             opening = false;
-          }, 960);
+          }, 940);
         }
 
         if (sealBtn) {
@@ -1337,7 +1211,6 @@
           });
         } else {
           body.classList.add("opened");
-          ensurePetals();
         }
 
         const revealNodes = Array.from(document.querySelectorAll(".reveal"));
@@ -1393,6 +1266,209 @@
           if (nodes.hours) nodes.hours.textContent = String(hours).padStart(2, "0");
           if (nodes.minutes) nodes.minutes.textContent = String(minutes).padStart(2, "0");
           if (nodes.seconds) nodes.seconds.textContent = String(seconds).padStart(2, "0");
+        }
+
+        const PetalSystem = (function () {
+          if (!petalCanvas || prefersReducedMotion) return null;
+
+          const ctx = petalCanvas.getContext("2d", { alpha: true });
+          if (!ctx) return null;
+
+          const mobileQuery = window.matchMedia("(max-width: 860px)");
+          const reducedGpuBudget =
+            mobileQuery.matches || ((navigator.hardwareConcurrency || 8) <= 4 && (window.devicePixelRatio || 1) > 1.6);
+
+          const state = {
+            w: 0,
+            h: 0,
+            dpr: Math.min(window.devicePixelRatio || 1, 2),
+            petals: [],
+            running: false,
+            raf: 0,
+            last: 0,
+            t: 0,
+            slowFrames: 0
+          };
+
+          function makeCanvas(width, height) {
+            if (typeof OffscreenCanvas !== "undefined") return new OffscreenCanvas(width, height);
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+            return canvas;
+          }
+
+          function createPetalSprite(size, hue, alpha, softEdge) {
+            const radius = Math.max(12, Math.ceil(size * 1.75));
+            const canvas = makeCanvas(radius * 2, radius * 2);
+            const sctx = canvas.getContext("2d", { alpha: true });
+            if (!sctx) return null;
+
+            sctx.translate(radius, radius);
+
+            const h = size;
+            const w = size * 0.68;
+
+            sctx.beginPath();
+            sctx.moveTo(0, -h * 0.54);
+            sctx.bezierCurveTo(w * 0.72, -h * 0.24, w * 0.64, h * 0.24, 0, h * 0.56);
+            sctx.bezierCurveTo(-w * 0.66, h * 0.2, -w * 0.66, -h * 0.2, 0, -h * 0.54);
+
+            const fill = sctx.createLinearGradient(-w, -h, w, h);
+            fill.addColorStop(0, `hsla(${hue - 6}, 88%, 92%, ${alpha})`);
+            fill.addColorStop(0.45, `hsla(${hue}, 78%, 76%, ${alpha})`);
+            fill.addColorStop(1, `hsla(${hue + 4}, 66%, 62%, ${alpha * 0.96})`);
+            sctx.fillStyle = fill;
+            sctx.fill();
+
+            sctx.lineWidth = Math.max(0.4, size * 0.04);
+            sctx.strokeStyle = `hsla(${hue - 8}, 78%, 95%, ${alpha * 0.5})`;
+            sctx.stroke();
+
+            sctx.beginPath();
+            sctx.moveTo(-w * 0.08, -h * 0.22);
+            sctx.quadraticCurveTo(w * 0.08, 0, -w * 0.06, h * 0.24);
+            sctx.strokeStyle = `hsla(${hue - 4}, 70%, 94%, ${alpha * 0.3})`;
+            sctx.lineWidth = Math.max(0.3, size * 0.025);
+            sctx.stroke();
+
+            if (softEdge > 0) {
+              sctx.globalCompositeOperation = "destination-over";
+              const glow = sctx.createRadialGradient(0, 0, size * 0.1, 0, 0, size * 1.25);
+              glow.addColorStop(0, `hsla(${hue}, 80%, 88%, ${alpha * 0.18})`);
+              glow.addColorStop(1, "hsla(0, 0%, 100%, 0)");
+              sctx.fillStyle = glow;
+              sctx.beginPath();
+              sctx.arc(0, 0, size * 1.28, 0, Math.PI * 2);
+              sctx.fill();
+              sctx.globalCompositeOperation = "source-over";
+            }
+
+            return {
+              canvas,
+              w: radius * 2,
+              h: radius * 2
+            };
+          }
+
+          function resize() {
+            state.dpr = Math.min(window.devicePixelRatio || 1, reducedGpuBudget ? 1.6 : 2);
+            state.w = window.innerWidth;
+            state.h = window.innerHeight;
+            petalCanvas.width = Math.floor(state.w * state.dpr);
+            petalCanvas.height = Math.floor(state.h * state.dpr);
+            petalCanvas.style.width = `${state.w}px`;
+            petalCanvas.style.height = `${state.h}px`;
+            ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
+            seed();
+          }
+
+          function makePetal(resetTop) {
+            const depth = 0.55 + Math.random() * 0.85;
+            const size = (7 + Math.random() * 15) * depth;
+            const alpha = 0.34 + Math.random() * 0.45;
+            const hue = 338 + Math.random() * 18;
+            const softEdge = Math.random() < 0.25 ? 0.9 : 0;
+            return {
+              x: Math.random() * state.w,
+              y: resetTop ? -40 - Math.random() * state.h * 0.6 : Math.random() * state.h,
+              size,
+              speed: (20 + Math.random() * 40) * depth,
+              sway: 16 + Math.random() * 56,
+              swayFreq: 0.35 + Math.random() * 0.95,
+              rot: Math.random() * Math.PI * 2,
+              rotSpeed: (-1 + Math.random() * 2) * 0.6,
+              alpha,
+              hue,
+              sprite: createPetalSprite(size, hue, alpha, softEdge)
+            };
+          }
+
+          function seed() {
+            const base = Math.floor(state.w / (reducedGpuBudget ? 26 : 22));
+            const min = reducedGpuBudget ? 16 : 22;
+            const max = reducedGpuBudget ? 40 : 64;
+            const target = Math.min(max, Math.max(min, base));
+            state.petals.length = 0;
+            for (let i = 0; i < target; i += 1) state.petals.push(makePetal(false));
+          }
+
+          function drawPetal(p) {
+            if (!p.sprite) return;
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot);
+            ctx.drawImage(p.sprite.canvas, -p.sprite.w * 0.5, -p.sprite.h * 0.5, p.sprite.w, p.sprite.h);
+
+            ctx.restore();
+          }
+
+          function tick(ts) {
+            if (!state.running) return;
+            if (!state.last) state.last = ts;
+            const dt = Math.min(0.033, (ts - state.last) / 1000);
+            state.last = ts;
+            state.t += dt;
+            state.slowFrames = dt > 0.022 ? state.slowFrames + 1 : Math.max(0, state.slowFrames - 1);
+
+            ctx.clearRect(0, 0, state.w, state.h);
+
+            const breeze = Math.sin(state.t * 0.18) * 6;
+            for (let i = 0; i < state.petals.length; i += 1) {
+              const p = state.petals[i];
+              p.y += p.speed * dt;
+              p.x += (Math.sin(state.t * p.swayFreq + i) * p.sway + breeze) * dt;
+              p.rot += p.rotSpeed * dt;
+
+              if (p.y > state.h + 36 || p.x < -44 || p.x > state.w + 44) {
+                state.petals[i] = makePetal(true);
+                continue;
+              }
+
+              drawPetal(p);
+            }
+
+            if (state.slowFrames > 24) {
+              const floorCount = reducedGpuBudget ? 14 : 20;
+              if (state.petals.length > floorCount) state.petals.length -= 2;
+              state.slowFrames = 0;
+            }
+
+            state.raf = requestAnimationFrame(tick);
+          }
+
+          function start() {
+            if (state.running) return;
+            state.running = true;
+            state.last = 0;
+            state.raf = requestAnimationFrame(tick);
+          }
+
+          function stop() {
+            state.running = false;
+            if (state.raf) cancelAnimationFrame(state.raf);
+          }
+
+          window.addEventListener("resize", resize, { passive: true });
+          document.addEventListener("visibilitychange", () => {
+            if (!state.running) return;
+            if (document.hidden) {
+              stop();
+            } else {
+              start();
+            }
+          });
+
+          resize();
+
+          return { start, stop };
+        })();
+
+        let petalsReady = false;
+        function ensurePetals() {
+          if (petalsReady) return;
+          petalsReady = true;
+          if (PetalSystem) PetalSystem.start();
         }
 
         updateCountdown();
